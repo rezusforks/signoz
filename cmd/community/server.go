@@ -86,8 +86,13 @@ func runServer(ctx context.Context, config signoz.Config, logger *slog.Logger) e
 		zeus.Config{},
 		noopzeus.NewProviderFactory(),
 		licensing.Config{},
+<<<<<<< HEAD
 		func(_ sqlstore.SQLStore, _ zeus.Zeus, _ organization.Getter, _ analytics.Analytics) factory.ProviderFactory[licensing.Licensing, licensing.Config] {
 			return communitylicensing.NewFactory()
+=======
+		func(_ sqlstore.SQLStore, _ zeus.Zeus, _ organization.Getter, _ analytics.Analytics, _ cache.Cache) factory.ProviderFactory[licensing.Licensing, licensing.Config] {
+			return nooplicensing.NewFactory()
+>>>>>>> upstream/main
 		},
 		func(_ zeus.Zeus, _ licensing.Licensing) subscription.Subscription {
 			return noopsubscription.New()
